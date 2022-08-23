@@ -1,0 +1,86 @@
+\documentclass[12pt,letterpaper]{article}
+\usepackage{fullpage}
+\usepackage[top=2cm, bottom=4.5cm, left=2.5cm, right=2.5cm]{geometry}
+\usepackage{amsmath,amsthm,amsfonts,amssymb,amscd}
+
+\title{Logistic Regression}
+\author{Chi Nguyen}
+\date{August 2022}
+
+\begin{document}
+\maketitle
+\section{Proof: \(\frac{\delta L}{\delta W} = \frac{1}{N}X^T(\hat{y}-y)\)}
+    \[L = -\frac{1}{N}[y\log\hat{y}+(1-y)\log(1-\hat{y})]\]
+    
+    \begin{equation*}
+        \rightarrow
+        \frac{\delta L}{\delta \hat{y}} = -\frac{1}{N}(\frac{y}{\hat{y}}-\frac{1-y}{1-\hat{y}})
+                                          = \frac{1}{N}\frac{\hat{y}-y}{\hat{y}(1-\hat{y})}
+    \end{equation*}
+
+    $$X = \begin{bmatrix}
+        1 & x{_1}^{(1)} & x{_2}^{(1)}\\
+        1 & x{_1}^{(2)} & x{_2}^{(2)}\\
+        ... & ... & ...\\
+        1 & x{_1}^{(n)} & x{_2}^{(n)}\\
+        \end{bmatrix},
+    y = \begin{bmatrix}
+            y_1\\
+            y_2\\
+            ...\\
+            y_n
+          \end{bmatrix},
+    W = \begin{bmatrix}
+            w_0\\
+            w_1\\
+            w_2
+          \end{bmatrix}$$
+    
+    $$\hat{y} = \sigma(XW) = \frac{1}{1 + e^{-XW}}$$
+    \begin{equation*}
+        \begin{split}
+        \frac{\delta \hat{y}}{\delta w} &= X^{T} \frac{e^{-XW}}{(1 + e^{-XW})^2}\\
+                                        &= X^{T} \frac{1}{1 + e^{-XW}} (1 - \frac{1}{1 + e^{-XW}})\\
+                                        &= X^{T} \hat{y}(1 - \hat{y})
+        \end{split}
+    \end{equation*}
+    
+
+    \begin{equation*}
+        \frac{\delta L}{\delta W} = \frac{\delta L}{\delta \hat{y}} \frac{\delta \hat{y}}{\delta w}
+                                  = \frac{1}{N} X^T (\hat{y}-y)
+    \end{equation*}
+
+
+\pagebreak                  
+\section{Proof: MSE Loss is non-convex, BCE Loss is convex with LR}
+    MSE: $L = (\hat{y} - y)^2$
+    \begin{align*}
+        \frac{\delta L}{\delta \hat{y}} &= 2(\hat{y}-y)\\
+        \frac{\delta \hat{y}}{\delta W} &= -X^{T} \hat{y}(1 - \hat{y})\\
+        \rightarrow
+        \frac{\delta L}{\delta W} &= -2X^T(\hat{y}-y)\hat{y}(1 - \hat{y})\\
+                                  &= -2X^T(\hat{y}^2-y\hat{y}-\hat{y}^3+y\hat{y}^2)\\
+        \rightarrow
+        \frac{\delta^2L}{\delta^2W} &= 2(X^T)^2\hat{y}(1-\hat{y})(2\hat{y}-y-3\hat{y}^2+y\hat{y})
+    \end{align*}
+    
+    \(\hat{y} \in (0, 1) \rightarrow \hat{t}(1-\hat{y})>0 \rightarrow 2(X^T)^2\hat{y}(1-\hat{y})>0\)\\
+    When y=0: 
+    \begin{equation*}
+        2\hat{y}-y-3\hat{y}^2+y\hat{y} = 2\hat{y} - 3\hat{y}^2 \ngeq 0 \; \forall \hat{y}
+    \end{equation*}
+    When y=1: 
+    \begin{equation*}
+        2\hat{y}-y-3\hat{y}^2+y\hat{y} = -3\hat{y}^2 +3\hat{y} -1 < 0 \; \forall \hat{y}
+    \end{equation*}
+    \Rightarrow \(\frac{\delta^2L}{\delta^2W} \ngeq 0\) \forall \hat{y} \Rightarrow \text{non convex}\\
+
+    BCE: \(L = -[ylog\hat{y} + (1-y)log(1- \hat{y})]\)
+    \begin{align*}
+        \frac{\delta L}{\delta W} &=  X^T (\hat{y}-y)\\
+        \rightarrow
+        \frac{\delta^2L}{\delta^2W} &= (X^T)^2\hat{y}(1-\hat{y}) > 0 \; \forall \hat{y} \Rightarrow convex
+    \end{align*}
+    
+\end{document}
