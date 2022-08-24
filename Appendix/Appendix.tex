@@ -1,0 +1,89 @@
+\documentclass[12pt,letterpaper]{article}
+\usepackage{fullpage}
+\usepackage[top=2cm, bottom=2cm, left=2.5cm, right=2.5cm]{geometry}
+\usepackage{amsmath,amsthm,amsfonts,amssymb,amscd}
+
+\title{Appendix}
+\author{Chi Nguyen}
+\date{August 2022}
+
+\begin{document}
+
+\maketitle
+
+\section{Vector calculus}
+
+\subsection{$f: \mathrm{R}^n \rightarrow \mathrm{R}$}
+    $$
+    \begin{bmatrix}
+        x_1\\
+        x_2\\
+        ...\\
+        x_n
+    \end{bmatrix}
+    \rightarrow
+    f(x)
+    \Rightarrow
+    \frac{\delta f}{\delta x} = \begin{bmatrix}
+                                    \frac{\delta f(x)}{\delta x_1}
+                                    \frac{\delta f(x)}{\delta x_2}
+                                    ...
+                                    \frac{\delta f(x)}{\delta x_n}
+                                \end{bmatrix}
+    $$
+    
+\subsection{$f: \mathrm{R} \rightarrow \mathrm{R}^n$}
+    $$
+    x
+    \rightarrow
+    \begin{bmatrix}
+        f_1(x)\\
+        f_2(x)\\
+        ...\\
+        f_n(x)
+    \end{bmatrix}
+    \Rightarrow
+    \frac{\delta f}{\delta x} = \begin{bmatrix}
+                                    \frac{\delta f_1(x)}{\delta x_1}\\
+                                    \frac{\delta f_2(x)}{\delta x_2}\\
+                                    ...\\
+                                    \frac{\delta f_n(x)}{\delta x_n}
+                                \end{bmatrix}
+    $$
+    
+\subsection{$f: \mathrm{R}^m \rightarrow \mathrm{R}^n$}
+    $$
+    \begin{bmatrix}
+        x_1\\
+        x_2\\
+        ...\\
+        x_m
+    \end{bmatrix}
+    \rightarrow
+    \begin{bmatrix}
+        f_1(x)\\
+        f_2(x)\\
+        ...\\
+        f_n(x)
+    \end{bmatrix}
+    \Rightarrow
+    \frac{\delta f}{\delta x} = \begin{bmatrix}
+                                    \frac{\delta f_1(x)}{\delta x_1} & \frac{\delta f_1(x)}{\delta x_2} & ... & \frac{\delta f_1(x)}{\delta x_m}\\
+                                    \frac{\delta f_2(x)}{\delta x_1} & \frac{\delta f_2(x)}{\delta x_2} & ... & \frac{\delta f_2(x)}{\delta x_m}\\
+                                                                 ... &                              ... & ... &                             ... \\
+                                    \frac{\delta f_n(x)}{\delta x_1} & \frac{\delta f_n(x)}{\delta x_2} & ... & \frac{\delta f_n(x)}{\delta x_m}
+                                \end{bmatrix}   
+    $$
+
+\subsection{The Hessian matrix is the square matrix of second partial derivatives of a scalar valued function f(1.1)}
+    $$
+    H(f) = (\frac{\delta f}{\delta x})^T\frac{\delta f}{\delta x}
+    \begin{bmatrix}
+        \frac{\delta f^2(x)}{\delta x_1^2} & \frac{\delta f^2(x)}{\delta x_1\delta x_2} & ... & \frac{\delta f^2(x)}{\delta x_1\delta x_n}\\
+        \frac{\delta f^2(x)}{\delta x_2\delta x_1} & \frac{\delta f^2(x)}{\delta x_2^2} & ... & \frac{\delta f^2(x)}{\delta x_2\delta x_n}\\
+                                     ... &                              ... & ... &                             ... \\
+        \frac{\delta f^2(x)}{\delta x_n\delta x_1} & \frac{\delta f^2(x)}{\delta x_n\delta x_2} & ... & \frac{\delta f^2(x)}{\delta x_n^2}
+    \end{bmatrix} 
+    $$
+
+\end{document}
