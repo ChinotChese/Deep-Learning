@@ -77,13 +77,12 @@
 
 \subsection{The Hessian matrix is the square matrix of second partial derivatives of a scalar valued function f(1.1)}
     $$
-    H(f) = (\frac{\delta f}{\delta x})^T\frac{\delta f}{\delta x}
-    \begin{bmatrix}
-        \frac{\delta f^2(x)}{\delta x_1^2} & \frac{\delta f^2(x)}{\delta x_1\delta x_2} & ... & \frac{\delta f^2(x)}{\delta x_1\delta x_n}\\
-        \frac{\delta f^2(x)}{\delta x_2\delta x_1} & \frac{\delta f^2(x)}{\delta x_2^2} & ... & \frac{\delta f^2(x)}{\delta x_2\delta x_n}\\
-                                     ... &                              ... & ... &                             ... \\
-        \frac{\delta f^2(x)}{\delta x_n\delta x_1} & \frac{\delta f^2(x)}{\delta x_n\delta x_2} & ... & \frac{\delta f^2(x)}{\delta x_n^2}
-    \end{bmatrix} 
+    H(f) = \begin{bmatrix}
+                \frac{\delta f^2(x)}{\delta x_1^2} & \frac{\delta f^2(x)}{\delta x_1\delta x_2} & ... & \frac{\delta f^2(x)}{\delta x_1\delta x_n}\\
+                \frac{\delta f^2(x)}{\delta x_2\delta x_1} & \frac{\delta f^2(x)}{\delta x_2^2} & ... & \frac{\delta f^2(x)}{\delta x_2\delta x_n}\\
+                                             ... &                              ... & ... &                             ... \\
+                \frac{\delta f^2(x)}{\delta x_n\delta x_1} & \frac{\delta f^2(x)}{\delta x_n\delta x_2} & ... & \frac{\delta f^2(x)}{\delta x_n^2}
+           \end{bmatrix}  
     $$
 
 \end{document}
